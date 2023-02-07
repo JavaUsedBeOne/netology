@@ -1,9 +1,35 @@
-public class Main {
-    public static void main(String[] args) {
-        int[] sales = {1, 44, 788, 90};
-        SalesManager manager = new SalesManager(sales);
-        System.out.println("Макс  " + manager.max());
-        }
+public class SalesManager {
+    protected int[] sales;
 
+    public SalesManager(int[] sales) {
+        this.sales = sales;
     }
+
+    public int max() {
+        int max = -1;
+        for (int sale : sales) {
+            if (sale > max) {
+                max = sale;
+            }
+        }
+        return max;
+    }
+    public int min() {
+        int min = Integer.MAX_VALUE;
+        for(int sale : sales) {
+            if (sale < min) {
+                min = sale;
+            }
+        }
+        return min;
+    }
+    public int average() {
+        int sum = 0;
+        for (int sale : sales) {
+            sum += sale;
+        }
+        return  (sum - min() - max()) / (sales.length - 2);
+    }
+}
+
 
